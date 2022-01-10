@@ -1,0 +1,10 @@
+.newsWrapper {
+  width: 97%;
+  height: 97%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 30px;
+}

@@ -1,6 +1,21 @@
-.containerWrapper {
-  height: 100vh;
-  min-height: 100vh;
+.containerBlock {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.containerWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+  max-width: 1900px;
+}
+
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 30px 0;
 }
