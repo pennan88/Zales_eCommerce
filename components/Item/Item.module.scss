@@ -1,0 +1,20 @@
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0;
+  width: 90%;
+  font-size: 16px;
+  padding: 5px 3px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 0.1s ease-in all;
+}
+
+.item:hover {
+  transform: scale(105%);
+}
+
+.red {
+  color: rgb(255, 0, 0);
+}
