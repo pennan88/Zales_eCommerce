@@ -1,0 +1,11 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  font-family: $quicksand;
+}

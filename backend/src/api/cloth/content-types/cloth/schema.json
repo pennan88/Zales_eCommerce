@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clothes",
+  "info": {
+    "singularName": "cloth",
+    "pluralName": "clothes",
+    "displayName": "Clothes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Price": {
+      "type": "decimal",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Mens_Clothing",
+        "Womens_Clothing",
+        "Kids_Clothing"
+      ],
+      "required": true
+    },
+    "Size": {
+      "type": "enumeration",
+      "enum": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "required": true
+    }
+  }
+}

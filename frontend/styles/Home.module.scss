@@ -1,0 +1,21 @@
+.containerBlock {
+  display: flex;
+  background-color: rgb(245, 245, 245);
+  justify-content: center;
+}
+
+.outerWrapper {
+  max-width: 1920px;
+  width: 100vw;
+  display: flex;
+  border-left: 1px black solid;
+  flex-direction: row;
+}
+
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  border-right: 1px black solid;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}

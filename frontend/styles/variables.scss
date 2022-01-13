@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+//fonts
+
+$quicksand: "Quicksand", sans-serif;
+
+$white: rgb(255, 255, 255);
+$light: #dbe6ed;
+$dark: #1a1a1d;
+$primary: #55c2da;
+
+//border-radius
+
+$borderRadius: 12px;
+
+//letter spacing
+
+$letterSpacing: 0.5px;
+
+//spacing
+
+$spacing-sm: 12px;
+$spacing-md: 24px;
+$spacing-lg: 42px;
+$spacing-xl: 64px;
+
+//heights
+
+$headerHeight: 90px;
+
+//box shadow
+$boxShadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
+  0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1),
+  0 16px 16px rgba(0, 0, 0, 0.05);
+
+//breakpoint
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    //1440px
+    @media (min-width: 90em) {
+      @content;
+    }
+  } @else if $point == lg {
+    //1024px
+    @media (min-width: 64em) {
+      @content;
+    }
+  } @else if $point == md {
+    //768px
+    @media (min-width: 48em) {
+      @content;
+    }
+  } @else if $point == md-only {
+    //767px
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == sm {
+    //600px
+    @media (min-width: 37.5em) {
+      @content;
+    }
+  } @else if $point == sm-only {
+    //599px
+    @media (max-width: 599px) {
+      @content;
+    }
+  }
+}
