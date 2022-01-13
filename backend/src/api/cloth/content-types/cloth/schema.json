@@ -52,6 +52,9 @@
         "XXL"
       ],
       "required": true
+    },
+    "Image_url": {
+      "type": "string"
     }
   }
 }

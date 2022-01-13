@@ -1,39 +1,61 @@
 @import "../../styles/variables.scss";
 
 .Item {
-  border: 1px black solid;
   display: flex;
+  height: 400px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: white;
   box-sizing: 5px;
-  box-shadow: 0 4px 2px -2px black;
+  border-radius: 5px;
 
   @include breakpoint(sm) {
   }
-}
 
-.imageContainer {
-  width: 100px;
-  height: 200px;
-  text-align: center;
-
-  img {
-    width: inherit;
-    height: inherit;
+  .imageContainer {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: inherit;
+      height: inherit;
+    }
   }
-}
 
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  font-size: 10px;
-  height: 100%;
-  margin: 5px;
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    height: 100%;
+    margin: 5px;
 
-  .title {
-    text-align: center;
-    font-size: 14px;
+    .title {
+      text-align: left;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .description {
+      text-align: left;
+      height: 100%;
+      padding: 5px;
+    }
+  }
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+
+    .btn {
+      background-color: transparent;
+      border: 1px black solid;
+      padding: 5px 15px;
+      border-radius: $borderRadius;
+      cursor: pointer;
+    }
   }
 }

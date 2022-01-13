@@ -1,30 +1,34 @@
 import style from "./News.module.scss";
 import Itemcard from "../../components/itemcard/Itemcard";
-export const getStaticProps = async () => {
-  const res = await fetch("https://fakestoreapi.com/products");
-  const data = await res.json();
 
-  return {
-    props: { products: data },
-  };
-};
-
-const News = ({ products }) => {
+const News = ({ data }: any) => {
+  console.log(data.data);
   return (
     <div className={[style.newsWrapper, style.grid].join(" ")}>
-      {products.map(({ id, title, price, description, image }) => {
-        return (
-          <Itemcard
-            key={id}
-            title={title}
-            price={price}
-            description={description}
-            image={image}
-          />
-        );
-      })}
+      {data &&
+        data.data.map(({ attributes }: any, index: any) => {
+          return (
+            <Itemcard
+              key={index}
+              title={attributes.Name}
+              price={attributes.Price}
+              description={attributes.Description}
+              image={attributes.Image_url}
+            />
+          );
+        })}
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:1337/api/clothes");
+  const data = await res.json();
+  console.log(data);
+
+  return {
+    props: { data },
+  };
 };
 
 export default News;
