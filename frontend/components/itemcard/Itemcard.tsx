@@ -1,13 +1,15 @@
 import style from "./Itemcard.module.scss";
+import Link from "next/link";
 
 interface iItem {
   title: string;
   price: number;
   description: string;
   image?: string;
+  slug: string;
 }
 
-const Itemcard = ({ title, price, description, image }: iItem) => {
+const Itemcard = ({ title, price, description, image, slug }: iItem) => {
   return (
     <div className={[style.Item, style.itemGrid].join(" ")}>
       <div className={style.imageContainer}>
@@ -18,7 +20,9 @@ const Itemcard = ({ title, price, description, image }: iItem) => {
         <h3 className={style.description}>{description}</h3>
       </div>
       <div className={style.buttonContainer}>
-        <div className={style.btn}>Preview</div>
+        <Link href={slug}>
+          <a className={style.btn}>Preview</a>
+        </Link>
         <h3 className={style.price}>{price}kr</h3>
       </div>
     </div>

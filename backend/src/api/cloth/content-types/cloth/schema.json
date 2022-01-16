@@ -32,29 +32,22 @@
       "type": "text",
       "required": true
     },
-    "Category": {
-      "type": "enumeration",
-      "enum": [
-        "Mens_Clothing",
-        "Womens_Clothing",
-        "Kids_Clothing"
-      ],
-      "required": true
+    "Slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "Name"
     },
     "Size": {
-      "type": "enumeration",
-      "enum": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.sizes",
       "required": true
     },
-    "Image_url": {
-      "type": "string"
+    "Category": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.category",
+      "required": true
     }
   }
 }

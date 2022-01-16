@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_extra_categories",
+  "info": {
+    "displayName": "Category",
+    "icon": "arrow-right"
+  },
+  "options": {},
+  "attributes": {
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Mens_clothing",
+        "Womens_clothing",
+        "Kids_clothing"
+      ],
+      "required": true
+    }
+  }
+}
