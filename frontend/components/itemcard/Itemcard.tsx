@@ -23,7 +23,7 @@ const Itemcard = ({ title, price, description, image, slug }: iItem) => {
         <Link href={slug}>
           <a className={style.btn}>Preview</a>
         </Link>
-        <h3 className={style.price}>{price}kr</h3>
+        <h3 className={style.price}>{price}:-</h3>
       </div>
     </div>
   );

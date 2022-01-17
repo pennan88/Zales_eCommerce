@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .sideWrapper {
   min-width: 250px;
   min-height: 100vh;
@@ -10,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(207 201 192);
+  background-color: $navbar;
 }
 
 .brandContainer {

@@ -3,6 +3,7 @@
 .Item {
   display: flex;
   height: 400px;
+  background-color: #eff1f3;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -56,6 +57,12 @@
       padding: 5px 15px;
       border-radius: $borderRadius;
       cursor: pointer;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      &:hover {
+        background-color: map-get($emerald, emerald900);
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .productCard {
   border: 1px black solid;
   width: 800px;
@@ -72,7 +74,7 @@
           transition: 0.5s ease all;
 
           &:hover {
-            background-color: blue;
+            background-color: map-get($indigo, indigo800);
             color: white;
             border-color: white;
           }
@@ -93,12 +95,12 @@
 
     .btn {
       border: 1px white solid;
-      width: 80%;
+      width: 100%;
       text-align: center;
       padding: 10px 0;
       font-size: 20px;
       border-radius: 10px;
-      background-color: green;
+      background-color: map-get($emerald, emerald800);
       color: white;
       letter-spacing: 1px;
       font-weight: bold;
