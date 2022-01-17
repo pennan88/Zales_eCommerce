@@ -8,7 +8,7 @@ const Product = ({ product }: any) => {
       <Productcard
         name={product.Name}
         image={`http://localhost:1337${product.Image.data.attributes.url}`}
-        description={product.Description}
+        description={product.largeDescription}
         size={product.Size}
         price={product.Price}
       />
