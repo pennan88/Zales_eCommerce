@@ -1,7 +1,6 @@
-import styles from "./Productcard.module.scss";
-import DOMPurify from "dompurify";
+import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
-import { marked } from "marked";
+import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
   name: string;
@@ -11,6 +10,46 @@ interface ProductTypes {
   price: number;
 }
 
+const easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeIn = {
+  initial: {
+    opacity: 0,
+    y: -20,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: easing,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+  },
+};
+
+const fadeUp = {
+  initial: {
+    opacity: 0,
+    y: -20,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: easing,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+  },
+};
+
 const Productcard = ({
   name,
   image,
@@ -19,10 +58,23 @@ const Productcard = ({
   price,
 }: ProductTypes) => {
   return (
-    <div className={styles.productContainer}>
+    <motion.div
+      variants={fadeIn}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={styles.productContainer}
+    >
       <div className={styles.left}>
         <div className={styles.imageContainer}>
-          <img src={image} alt="" />
+          <motion.img
+            variants={fadeUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            src={image}
+            alt=""
+          />
         </div>
       </div>
       <div className={styles.right}>
@@ -36,18 +88,33 @@ const Productcard = ({
           <h1>Avalible Sizes</h1>
           <div>
             {size.map((size: any) => (
-              <h4>{size.Size}</h4>
+              <motion.h4
+                variants={fadeUp}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {size.Size}
+              </motion.h4>
             ))}
           </div>
         </div>
         <div>
           <div className={styles.priceContainer}>{price}:-</div>
           <div className={styles.btnContainer}>
-            <div className={styles.btn}>Purchase</div>
+            <motion.div
+              variants={fadeUp}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className={styles.btn}
+            >
+              Purchase
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

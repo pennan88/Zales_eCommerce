@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Productcard from "../components/productcard/Productcard";
 import styles from "../styles/slug.module.scss";
 const Product = ({ product }: any) => {
   console.log(product);
   return (
-    <div className={styles.slugContainer}>
+    <motion.div className={styles.slugContainer}>
       <Productcard
         name={product.Name}
         image={`http://localhost:1337${product.Image.data.attributes.url}`}
@@ -12,7 +13,7 @@ const Product = ({ product }: any) => {
         size={product.Size}
         price={product.Price}
       />
-    </div>
+    </motion.div>
   );
 };
 

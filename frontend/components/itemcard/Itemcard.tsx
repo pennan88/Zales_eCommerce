@@ -13,15 +13,11 @@ interface iItem {
 const easing = [0.6, -0.05, 0.01, 0.99];
 
 const fadeInUp = {
-  initial: {
-    x: 60,
-    opacity: 1,
-  },
   animate: {
-    y: 0,
+    x: 0,
     opacity: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: easing,
     },
   },
@@ -29,7 +25,13 @@ const fadeInUp = {
 
 const Itemcard = ({ price, description, image, slug }: iItem) => {
   return (
-    <motion.div className={style.item} variants={fadeInUp}>
+    <motion.div
+      className={style.item}
+      variants={fadeInUp}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className={style.imageContainer}>
         <img src={image} alt="product image" />
       </div>

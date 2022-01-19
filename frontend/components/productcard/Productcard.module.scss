@@ -109,6 +109,7 @@
 
         &:hover {
           opacity: 80%;
+          background-color: map-get($emerald, emerald700);
           cursor: pointer;
         }
       }

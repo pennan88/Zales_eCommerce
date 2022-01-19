@@ -13,30 +13,28 @@ const stagger = {
 const News = ({ data }: any) => {
   return (
     <>
-      <AnimatePresence initial={true}>
-        <motion.div
-          className={[style.newsWrapper].join(" ")}
-          exit={{ opacity: 1 }}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.div variants={stagger} className={style.grid}>
-            {data &&
-              data.map(({ attributes }: any, index: any) => {
-                return (
-                  <Itemcard
-                    key={index}
-                    slug={attributes.Slug}
-                    title={attributes.Name}
-                    price={attributes.Price}
-                    description={attributes.smallDescription}
-                    image={`http://localhost:1337${attributes.Image.data.attributes.url}`}
-                  />
-                );
-              })}
-          </motion.div>
+      <motion.div
+        className={[style.newsWrapper].join(" ")}
+        exit={{ opacity: 0 }}
+        initial="inital"
+        animate="animate"
+      >
+        <motion.div variants={stagger} className={style.grid}>
+          {data &&
+            data.map(({ attributes }: any, index: any) => {
+              return (
+                <Itemcard
+                  key={index}
+                  slug={attributes.Slug}
+                  title={attributes.Name}
+                  price={attributes.Price}
+                  description={attributes.smallDescription}
+                  image={`http://localhost:1337${attributes.Image.data.attributes.url}`}
+                />
+              );
+            })}
         </motion.div>
-      </AnimatePresence>
+      </motion.div>
     </>
   );
 };
