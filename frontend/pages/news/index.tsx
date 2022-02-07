@@ -1,6 +1,9 @@
-import style from "./News.module.scss";
+import { motion } from "framer-motion";
+import { ClothEntity, PageEntity } from "generated/graphql";
+import { initializeApollo } from "lib/apollo";
+import { queryClothes, queryPage } from "shared/utils/queries";
 import Itemcard from "../../components/itemcard/Itemcard";
-import { AnimatePresence, motion } from "framer-motion";
+import style from "./News.module.scss";
 
 const stagger = {
   animate: {
@@ -10,42 +13,53 @@ const stagger = {
   },
 };
 
-const News = ({ data }: any) => {
+interface IProps {
+  page: PageEntity["attributes"];
+  clothes: ClothEntity[];
+}
+
+const News = ({ page, clothes }: IProps) => {
+  console.log(clothes[0].attributes?.Image?.data?.attributes?.url);
   return (
-    <>
-      <motion.div
-        className={[style.newsWrapper].join(" ")}
-        exit={{ opacity: 0 }}
-        initial="inital"
-        animate="animate"
-      >
-        <motion.div variants={stagger} className={style.grid}>
-          {data &&
-            data.map(({ attributes }: any, index: any) => {
-              return (
-                <Itemcard
-                  key={index}
-                  slug={attributes.Slug}
-                  title={attributes.Name}
-                  price={attributes.Price}
-                  description={attributes.smallDescription}
-                  image={`http://localhost:1337${attributes.Image.data.attributes.url}`}
-                />
-              );
-            })}
-        </motion.div>
+    <motion.div
+      className={[style.newsWrapper].join(" ")}
+      exit={{ opacity: 0 }}
+      initial="inital"
+      animate="animate"
+    >
+      <motion.div variants={stagger} className={style.grid}>
+        {clothes &&
+          clothes!.map((cloth, index) => {
+            return (
+              <Itemcard
+                key={index}
+                slug={"cloth/" + cloth.attributes?.Slug}
+                title={cloth.attributes!.Name}
+                price={cloth.attributes!.Price}
+                description={cloth.attributes!.ShortDesc!}
+                image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
+              />
+            );
+          })}
       </motion.div>
-    </>
+    </motion.div>
   );
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:1337/api/clothes/?populate=*");
-  const data = await res.json();
-  console.log(data);
+  const client = initializeApollo();
 
+  const pageData = await queryPage("news", {
+    client: client,
+  });
+  const clothesData = await queryClothes({
+    client: client,
+  });
   return {
-    props: { data: data.data },
+    props: {
+      page: pageData,
+      clothes: clothesData,
+    },
   };
 };
 

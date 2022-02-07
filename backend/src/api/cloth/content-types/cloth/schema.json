@@ -45,13 +45,13 @@
       "component": "extra.category",
       "required": true
     },
-    "smallDescription": {
+    "ShortDesc": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "largeDescription": {
+    "LongDesc": {
       "type": "richtext",
-      "required": true
+      "required": false
     }
   }
 }

@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
 import Navigation from "../components/Navigation/Navigation";
 import { AnimatePresence } from "framer-motion";
+import { Provider } from "react-redux";
 
 import styles from "../styles/Home.module.scss";
 

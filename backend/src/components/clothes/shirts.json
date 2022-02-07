@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_clothes_shirts",
+  "info": {
+    "displayName": "Shirts",
+    "icon": "align-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Price": {
+      "required": true,
+      "type": "decimal"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "Slug": {
+      "type": "string",
+      "required": true
+    },
+    "Sizes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.sizes",
+      "required": true
+    },
+    "Categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.category",
+      "required": true
+    },
+    "ShortDesc": {
+      "type": "string",
+      "required": true
+    },
+    "LongDesc": {
+      "type": "text"
+    }
+  }
+}

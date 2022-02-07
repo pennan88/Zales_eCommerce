@@ -1,0 +1,10 @@
+query getPages($path: String!) {
+  pages(filters: { Path: { eq: $path } }) {
+    data {
+      attributes {
+        Title
+        Path
+      }
+    }
+  }
+}

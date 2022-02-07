@@ -1,0 +1,27 @@
+query getOneClothes($slug: String!) {
+  clothes(filters: { Slug: { eq: $slug } }) {
+    data {
+      attributes {
+        Name
+        Price
+        Image {
+          data {
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        Slug
+        Size {
+          Size
+        }
+        Category {
+          Category
+        }
+        ShortDesc
+        LongDesc
+      }
+    }
+  }
+}

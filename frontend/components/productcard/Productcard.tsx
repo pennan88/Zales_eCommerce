@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
+import { ClothEntity, GetOneClothesQuery } from "generated/graphql";
 import ReactMarkdown from "react-markdown";
 import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
-  name: string;
-  image: string;
-  description: string;
-  size: [string];
-  price: number;
+  // name: string;
+  // image: string;
+  // description: string;
+  // size: [string];
+  // price: number;
+  props: GetOneClothesQuery;
 }
 
 const easing = [0.6, -0.05, 0.01, 0.99];
@@ -50,13 +52,8 @@ const fadeUp = {
   },
 };
 
-const Productcard = ({
-  name,
-  image,
-  description,
-  size,
-  price,
-}: ProductTypes) => {
+const Productcard = ({ props }: ProductTypes) => {
+  console.log(props.clothes?.data[0].attributes?.Name);
   return (
     <motion.div
       variants={fadeIn}
@@ -72,35 +69,42 @@ const Productcard = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            src={image}
+            src={
+              props?.clothes?.data[0].attributes?.Image?.data?.attributes?.name
+            }
             alt=""
           />
         </div>
       </div>
       <div className={styles.right}>
         <div className={styles.titleContainer}>
-          <h1 className={styles.title}>{name}</h1>
+          <h1 className={styles.title}>
+            {props.clothes?.data[0].attributes?.Name}
+          </h1>
         </div>
         <div className={styles.descriptionContainer}>
-          <ReactMarkdown children={description} />
+          <p>{props?.clothes?.data[0].attributes?.LongDesc}</p>
         </div>
         <div className={styles.sizeContainer}>
           <h1>Avalible Sizes</h1>
           <div>
-            {size.map((size: any) => (
+            {props?.clothes?.data[0].attributes?.Size.map(({ Size }, index) => (
               <motion.h4
+                key={index}
                 variants={fadeUp}
                 initial="initial"
                 animate="animate"
                 exit="exit"
               >
-                {size.Size}
+                {Size}
               </motion.h4>
             ))}
           </div>
         </div>
         <div>
-          <div className={styles.priceContainer}>{price}:-</div>
+          <div className={styles.priceContainer}>
+            {props?.clothes?.data[0].attributes?.Price}:-
+          </div>
           <div className={styles.btnContainer}>
             <motion.div
               variants={fadeUp}
