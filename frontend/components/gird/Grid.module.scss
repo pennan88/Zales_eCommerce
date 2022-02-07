@@ -1,0 +1,33 @@
+@import "./../../styles/variables.scss";
+
+.grid {
+  width: 97%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 97%;
+}
+
+.gridItems {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 30px;
+  width: 100%;
+  justify-items: center;
+  grid-template-rows: repeat(1, 1fr);
+
+  @include breakpoint(sm) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include breakpoint(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

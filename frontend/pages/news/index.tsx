@@ -1,3 +1,4 @@
+import Grid from "@components/gird/Grid";
 import { motion } from "framer-motion";
 import { ClothEntity, PageEntity } from "generated/graphql";
 import { initializeApollo } from "lib/apollo";
@@ -21,28 +22,21 @@ interface IProps {
 const News = ({ page, clothes }: IProps) => {
   console.log(clothes[0].attributes?.Image?.data?.attributes?.url);
   return (
-    <motion.div
-      className={[style.newsWrapper].join(" ")}
-      exit={{ opacity: 0 }}
-      initial="inital"
-      animate="animate"
-    >
-      <motion.div variants={stagger} className={style.grid}>
-        {clothes &&
-          clothes!.map((cloth, index) => {
-            return (
-              <Itemcard
-                key={index}
-                slug={"cloth/" + cloth.attributes?.Slug}
-                title={cloth.attributes!.Name}
-                price={cloth.attributes!.Price}
-                description={cloth.attributes!.ShortDesc!}
-                image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
-              />
-            );
-          })}
-      </motion.div>
-    </motion.div>
+    <Grid>
+      {clothes &&
+        clothes!.map((cloth, index) => {
+          return (
+            <Itemcard
+              key={index}
+              slug={"cloth/" + cloth.attributes?.Slug}
+              title={cloth.attributes!.Name}
+              price={cloth.attributes!.Price}
+              description={cloth.attributes!.ShortDesc!}
+              image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
+            />
+          );
+        })}
+    </Grid>
   );
 };
 
