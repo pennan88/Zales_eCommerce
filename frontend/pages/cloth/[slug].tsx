@@ -12,7 +12,6 @@ interface IProps {
 }
 
 const Product = ({ cloth }: IProps) => {
-  console.log(cloth);
   return (
     <motion.div className={styles.slugContainer}>
       <Productcard props={cloth} />
