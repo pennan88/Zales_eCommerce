@@ -1,5 +1,5 @@
 import Breakline from "../breakline/Breakline";
-import style from "./Item.module.scss";
+import style from "./Category.module.scss";
 
 interface iProps {
   children: any;
@@ -7,7 +7,7 @@ interface iProps {
   onClick?: () => void;
 }
 
-const Item: React.FC<iProps> = ({ children, variant, onClick }) => {
+const Category: React.FC<iProps> = ({ children, variant, onClick }) => {
   return (
     <>
       <div onClick={onClick} className={`${style[`${variant}`]} ${style.item}`}>
@@ -18,4 +18,4 @@ const Item: React.FC<iProps> = ({ children, variant, onClick }) => {
   );
 };
 
-export default Item;
+export default Category;

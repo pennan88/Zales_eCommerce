@@ -14,20 +14,20 @@
   row-gap: 30px;
   width: 100%;
   justify-items: center;
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: repeat(1, auto);
 
   @include breakpoint(sm) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, auto);
   }
 
   @include breakpoint(md) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
   }
   @include breakpoint(lg) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, auto);
   }
 
   @include breakpoint(xl) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
   }
 }

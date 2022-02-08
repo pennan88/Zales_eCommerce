@@ -1,6 +1,9 @@
 import style from "./Itemcard.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import hotDeal from "../../public/images/promotional.png";
+import Image from "next/image";
+import { fadeInUp } from "public/animations/framer";
 
 interface iItem {
   title: string;
@@ -8,22 +11,10 @@ interface iItem {
   description: string;
   image?: string;
   slug: string;
+  hot: boolean;
 }
 
-const easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: easing,
-    },
-  },
-};
-
-const Itemcard = ({ price, description, image, slug }: iItem) => {
+const Itemcard = ({ price, description, image, slug, hot }: iItem) => {
   return (
     <motion.div
       className={style.item}
@@ -32,6 +23,7 @@ const Itemcard = ({ price, description, image, slug }: iItem) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      {hot && <Image src={hotDeal} alt="" className={style.hotDeal} />}
       <div className={style.imageContainer}>
         <img src={image} alt="product image" />
       </div>

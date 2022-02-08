@@ -1,0 +1,14 @@
+@import "./../../styles/variables.scss";
+
+.container {
+  background: rgba(255, 255, 255, 0.623);
+  width: 97%;
+  height: clamp(30px, 100px, 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  border-radius: $borderRadius;
+  font-weight: bold;
+  font-size: clamp(10px, 25px, 50px);
+}

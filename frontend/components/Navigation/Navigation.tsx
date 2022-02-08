@@ -1,5 +1,5 @@
 import style from "./Navigation.module.scss";
-import Item from "../Item/Item";
+import Category from "../Category/Category";
 import logo from "../../public/images/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,25 +16,25 @@ const Navigation = () => {
         <div className={style.itemContainer}>
           <div className={style.itemList}>
             <Link href={"/news"}>
-              <Item>News</Item>
+              <Category>News</Category>
             </Link>
             <Link href={"/clothes"}>
-              <Item>Clothes</Item>
+              <Category>Clothes</Category>
             </Link>
             <Link href={"/shoes"}>
-              <Item>Shoes</Item>
+              <Category>Shoes</Category>
             </Link>
             <Link href={"/bags"}>
-              <Item>Bags</Item>
+              <Category>Bags</Category>
             </Link>
             <Link href={"/accessories"}>
-              <Item>Accessories</Item>
+              <Category>Accessories</Category>
             </Link>
             <Link href={"/giftcard"}>
-              <Item>Giftcards</Item>
+              <Category>Giftcards</Category>
             </Link>
             <Link href={"/sale"}>
-              <Item variant={"red"}>Sale</Item>
+              <Category variant={"red"}>Sale</Category>
             </Link>
           </div>
         </div>

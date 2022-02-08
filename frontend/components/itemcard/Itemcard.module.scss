@@ -10,7 +10,15 @@
   flex-direction: column;
   box-sizing: 5px;
   border-radius: 8px;
+  position: relative;
   padding: $spacing-sm;
+
+  .hotDeal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+  }
 
   .imageContainer {
     height: 100%;

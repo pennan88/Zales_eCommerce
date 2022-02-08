@@ -8,6 +8,28 @@
     background-color: $itemColor;
     width: 100%;
 
+    .exit {
+      position: absolute;
+      border: 1px black solid;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0 0 10px;
+      font-size: 25px;
+      font-weight: bold;
+      transition: 0.2s ease all;
+      cursor: pointer;
+
+      &:hover {
+        background-color: red;
+        border: white 1px solid;
+        color: white;
+      }
+    }
+
     .imageContainer {
       display: flex;
       justify-content: center;
@@ -71,6 +93,12 @@
         cursor: pointer;
         font-weight: bold;
         transition: 0.5s ease all;
+
+        &:focus {
+          background-color: map-get($indigo, indigo800);
+          color: white;
+          border-color: white;
+        }
 
         &:hover {
           background-color: map-get($indigo, indigo800);

@@ -1,3 +1,4 @@
+import Banner from "@components/Banner/Banner";
 import Grid from "@components/gird/Grid";
 import { motion } from "framer-motion";
 import { ClothEntity, PageEntity } from "generated/graphql";
@@ -20,23 +21,26 @@ interface IProps {
 }
 
 const News = ({ page, clothes }: IProps) => {
-  console.log(clothes[0].attributes?.Image?.data?.attributes?.url);
   return (
-    <Grid>
-      {clothes &&
-        clothes!.map((cloth, index) => {
-          return (
-            <Itemcard
-              key={index}
-              slug={"cloth/" + cloth.attributes?.Slug}
-              title={cloth.attributes!.Name}
-              price={cloth.attributes!.Price}
-              description={cloth.attributes!.ShortDesc!}
-              image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
-            />
-          );
-        })}
-    </Grid>
+    <>
+      <Banner Header={"All the latest and greatest"} />
+      <Grid>
+        {clothes &&
+          clothes!.map((cloth, index) => {
+            return (
+              <Itemcard
+                hot={false}
+                key={index}
+                slug={"cloth/" + cloth.attributes?.Slug}
+                title={cloth.attributes!.Name}
+                price={cloth.attributes!.Price}
+                description={cloth.attributes!.ShortDesc!}
+                image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
+              />
+            );
+          })}
+      </Grid>
+    </>
   );
 };
 
