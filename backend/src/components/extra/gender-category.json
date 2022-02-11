@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_extra_gender_categories",
+  "info": {
+    "displayName": "GenderCategory",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "Categories": {
+      "type": "enumeration",
+      "enum": [
+        "Men_Clothing",
+        "Women_Clothing",
+        "Kids_Clothing"
+      ]
+    }
+  }
+}

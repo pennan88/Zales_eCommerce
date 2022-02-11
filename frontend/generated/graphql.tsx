@@ -43,8 +43,10 @@ export type BooleanFilterInput = {
 
 export type Cloth = {
   __typename?: 'Cloth';
-  Category: Array<Maybe<ComponentExtraCategory>>;
-  Image?: Maybe<UploadFileEntityResponse>;
+  Category: ComponentExtraCategory;
+  Colors?: Maybe<Array<Maybe<ComponentExtraColor>>>;
+  GenderCategory: ComponentExtraGenderCategory;
+  Image?: Maybe<UploadFileRelationResponseCollection>;
   LongDesc?: Maybe<Scalars['String']>;
   Name: Scalars['String'];
   Price: Scalars['Float'];
@@ -57,8 +59,15 @@ export type Cloth = {
 };
 
 
-export type ClothCategoryArgs = {
-  filters?: InputMaybe<ComponentExtraCategoryFiltersInput>;
+export type ClothColorsArgs = {
+  filters?: InputMaybe<ComponentExtraColorFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ClothImageArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -103,8 +112,10 @@ export type ClothFiltersInput = {
 };
 
 export type ClothInput = {
-  Category?: InputMaybe<Array<InputMaybe<ComponentExtraCategoryInput>>>;
-  Image?: InputMaybe<Scalars['ID']>;
+  Category?: InputMaybe<ComponentExtraCategoryInput>;
+  Colors?: InputMaybe<Array<InputMaybe<ComponentExtraColorInput>>>;
+  GenderCategory?: InputMaybe<ComponentExtraGenderCategoryInput>;
+  Image?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   LongDesc?: InputMaybe<Scalars['String']>;
   Name?: InputMaybe<Scalars['String']>;
   Price?: InputMaybe<Scalars['Float']>;
@@ -114,55 +125,43 @@ export type ClothInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type ComponentClothesShirts = {
-  __typename?: 'ComponentClothesShirts';
-  Categories: Array<Maybe<ComponentExtraCategory>>;
-  Image?: Maybe<UploadFileRelationResponseCollection>;
-  LongDesc?: Maybe<Scalars['String']>;
-  Name: Scalars['String'];
-  Price: Scalars['Float'];
-  ShortDesc: Scalars['String'];
-  Sizes: Array<Maybe<ComponentExtraSizes>>;
-  Slug: Scalars['String'];
-  id: Scalars['ID'];
-};
-
-
-export type ComponentClothesShirtsCategoriesArgs = {
-  filters?: InputMaybe<ComponentExtraCategoryFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ComponentClothesShirtsImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ComponentClothesShirtsSizesArgs = {
-  filters?: InputMaybe<ComponentExtraSizesFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
 export type ComponentExtraCategory = {
   __typename?: 'ComponentExtraCategory';
-  Category: Enum_Componentextracategory_Category;
+  Categories?: Maybe<Enum_Componentextracategory_Categories>;
   id: Scalars['ID'];
-};
-
-export type ComponentExtraCategoryFiltersInput = {
-  Category?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ComponentExtraCategoryFiltersInput>>>;
-  not?: InputMaybe<ComponentExtraCategoryFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentExtraCategoryFiltersInput>>>;
 };
 
 export type ComponentExtraCategoryInput = {
-  Category?: InputMaybe<Enum_Componentextracategory_Category>;
+  Categories?: InputMaybe<Enum_Componentextracategory_Categories>;
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export type ComponentExtraColor = {
+  __typename?: 'ComponentExtraColor';
+  Color?: Maybe<Enum_Componentextracolor_Color>;
+  id: Scalars['ID'];
+};
+
+export type ComponentExtraColorFiltersInput = {
+  Color?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentExtraColorFiltersInput>>>;
+  not?: InputMaybe<ComponentExtraColorFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentExtraColorFiltersInput>>>;
+};
+
+export type ComponentExtraColorInput = {
+  Color?: InputMaybe<Enum_Componentextracolor_Color>;
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export type ComponentExtraGenderCategory = {
+  __typename?: 'ComponentExtraGenderCategory';
+  Categories?: Maybe<Enum_Componentextragendercategory_Categories>;
+  id: Scalars['ID'];
+};
+
+export type ComponentExtraGenderCategoryInput = {
+  Categories?: InputMaybe<Enum_Componentextragendercategory_Categories>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -207,10 +206,27 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
-export enum Enum_Componentextracategory_Category {
-  KidsClothing = 'Kids_clothing',
-  MensClothing = 'Mens_clothing',
-  WomensClothing = 'Womens_clothing'
+export enum Enum_Componentextracategory_Categories {
+  Accessories = 'Accessories',
+  Clothes = 'Clothes',
+  Shoes = 'Shoes'
+}
+
+export enum Enum_Componentextracolor_Color {
+  Black = 'Black',
+  Blue = 'Blue',
+  Green = 'Green',
+  Grey = 'Grey',
+  Pink = 'Pink',
+  Red = 'Red',
+  White = 'White',
+  Yellow = 'Yellow'
+}
+
+export enum Enum_Componentextragendercategory_Categories {
+  KidsClothing = 'Kids_Clothing',
+  MenClothing = 'Men_Clothing',
+  WomenClothing = 'Women_Clothing'
 }
 
 export enum Enum_Componentextrasizes_Size {
@@ -251,7 +267,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Cloth | ComponentClothesShirts | ComponentExtraCategory | ComponentExtraSizes | I18NLocale | Page | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Cloth | ComponentExtraCategory | ComponentExtraColor | ComponentExtraGenderCategory | ComponentExtraSizes | I18NLocale | Page | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -1010,7 +1026,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GetClothesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetClothesQuery = { __typename?: 'Query', clothes?: { __typename?: 'ClothEntityResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } } }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: Array<{ __typename?: 'ComponentExtraCategory', Category: Enum_Componentextracategory_Category }> } }> } };
+export type GetClothesQuery = { __typename?: 'Query', clothes?: { __typename?: 'ClothEntityResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, ShortDesc?: string, Price: number, Slug: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } }> }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }>, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, GenderCategory: { __typename?: 'ComponentExtraGenderCategory', Categories?: Enum_Componentextragendercategory_Categories } } }> } };
 
 export type GetPagesQueryVariables = Exact<{
   path: Scalars['String'];
@@ -1024,4 +1040,4 @@ export type GetOneClothesQueryVariables = Exact<{
 }>;
 
 
-export type GetOneClothesQuery = { __typename?: 'Query', clothes?: { __typename?: 'ClothEntityResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } } }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: Array<{ __typename?: 'ComponentExtraCategory', Category: Enum_Componentextracategory_Category }> } }> } };
+export type GetOneClothesQuery = { __typename?: 'Query', clothes?: { __typename?: 'ClothEntityResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, ShortDesc?: string, Price: number, Slug: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } }> }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }>, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, GenderCategory: { __typename?: 'ComponentExtraGenderCategory', Categories?: Enum_Componentextragendercategory_Categories } } }> } };

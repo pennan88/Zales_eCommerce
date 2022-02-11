@@ -3,6 +3,7 @@ query getOneClothes($slug: String!) {
     data {
       attributes {
         Name
+        ShortDesc
         Price
         Image {
           data {
@@ -13,13 +14,18 @@ query getOneClothes($slug: String!) {
           }
         }
         Slug
+        Colors {
+          Color
+        }
         Size {
           Size
         }
         Category {
-          Category
+          Categories
         }
-        ShortDesc
+        GenderCategory {
+          Categories
+        }
         LongDesc
       }
     }

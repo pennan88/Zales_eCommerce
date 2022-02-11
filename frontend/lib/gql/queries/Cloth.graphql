@@ -3,6 +3,7 @@ query getClothes {
     data {
       attributes {
         Name
+        ShortDesc
         Price
         Image {
           data {
@@ -13,13 +14,18 @@ query getClothes {
           }
         }
         Slug
+        Colors {
+          Color
+        }
         Size {
           Size
         }
         Category {
-          Category
+          Categories
         }
-        ShortDesc
+        GenderCategory {
+          Categories
+        }
         LongDesc
       }
     }

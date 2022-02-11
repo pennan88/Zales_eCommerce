@@ -22,7 +22,7 @@
     },
     "Image": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images"
@@ -39,12 +39,6 @@
       "component": "extra.sizes",
       "required": true
     },
-    "Category": {
-      "type": "component",
-      "repeatable": true,
-      "component": "extra.category",
-      "required": true
-    },
     "ShortDesc": {
       "type": "string",
       "required": false
@@ -52,6 +46,23 @@
     "LongDesc": {
       "type": "richtext",
       "required": false
+    },
+    "Category": {
+      "type": "component",
+      "repeatable": false,
+      "component": "extra.category",
+      "required": true
+    },
+    "Colors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.color"
+    },
+    "GenderCategory": {
+      "type": "component",
+      "repeatable": false,
+      "component": "extra.gender-category",
+      "required": true
     }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_extra_colors",
+  "info": {
+    "displayName": "Color",
+    "icon": "adjust",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Color": {
+      "type": "enumeration",
+      "enum": [
+        "Blue",
+        "Grey",
+        "Black",
+        "Green",
+        "Pink",
+        "Red",
+        "White",
+        "Yellow"
+      ]
+    }
+  }
+}

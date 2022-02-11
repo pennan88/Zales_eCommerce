@@ -28,15 +28,7 @@ const News = ({ page, clothes }: IProps) => {
         {clothes &&
           clothes!.map((cloth, index) => {
             return (
-              <Itemcard
-                hot={false}
-                key={index}
-                slug={"cloth/" + cloth.attributes?.Slug}
-                title={cloth.attributes!.Name}
-                price={cloth.attributes!.Price}
-                description={cloth.attributes!.ShortDesc!}
-                image={`//localhost:1337${cloth.attributes?.Image?.data?.attributes?.url}`}
-              />
+              <Itemcard hot={false} key={index} props={cloth.attributes} />
             );
           })}
       </Grid>

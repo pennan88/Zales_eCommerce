@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
-import { ClothEntity, GetOneClothesQuery } from "generated/graphql";
+import {
+  Enum_Componentextracolor_Color,
+  GetOneClothesQuery,
+} from "generated/graphql";
 import Markdown from "markdown-to-jsx";
 import { useRouter } from "next/router";
 import { fadeIn, fadeUp } from "public/animations/framer";
-import ReactMarkdown from "react-markdown";
+import { useState } from "react";
 import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
@@ -11,7 +14,20 @@ interface ProductTypes {
 }
 
 const Productcard = ({ props }: ProductTypes) => {
+  const [color, setColor] = useState(0);
+
   const router = useRouter();
+  const handeClick = (colorIndex: any) => {
+    console.log(colorIndex);
+    const color = props.clothes!.data[0].attributes!.Colors!.map(
+      ({ Color }) => {
+        return Color;
+      }
+    );
+    const i = color.indexOf(colorIndex);
+    console.log(i);
+    setColor(i);
+  };
 
   return (
     <motion.div
@@ -22,6 +38,18 @@ const Productcard = ({ props }: ProductTypes) => {
       className={styles.productContainer}
     >
       <div className={styles.left}>
+        <div className={styles.imageContainer}>
+          <motion.img
+            variants={fadeUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            src={`//localhost:1337${props.clothes?.data[0].attributes?.Image?.data[color]?.attributes?.url}`}
+            alt=""
+          />
+        </div>
+      </div>
+      <div className={styles.right}>
         <div
           className={styles.exit}
           onClick={() => {
@@ -30,18 +58,6 @@ const Productcard = ({ props }: ProductTypes) => {
         >
           X
         </div>
-        <div className={styles.imageContainer}>
-          <motion.img
-            variants={fadeUp}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            src={`//localhost:1337${props.clothes?.data[0].attributes?.Image?.data?.attributes?.url}`}
-            alt=""
-          />
-        </div>
-      </div>
-      <div className={styles.right}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
             {props.clothes?.data[0].attributes?.Name}
@@ -64,6 +80,22 @@ const Productcard = ({ props }: ProductTypes) => {
                 {Size}
               </motion.h4>
             ))}
+          </div>
+        </div>
+        <div className={styles.colorContainer}>
+          <h1>Colors</h1>
+          <div>
+            {props.clothes?.data[0].attributes?.Colors?.map(
+              ({ Color }, index) => {
+                return (
+                  <motion.h4
+                    onClick={() => handeClick(Color)}
+                    key={index}
+                    className={[styles.color, styles[`${Color}`]].join(" ")}
+                  ></motion.h4>
+                );
+              }
+            )}
           </div>
         </div>
         <div>

@@ -2,18 +2,17 @@
   "collectionName": "components_extra_categories",
   "info": {
     "displayName": "Category",
-    "icon": "arrow-right"
+    "icon": "american-sign-language-interpreting"
   },
   "options": {},
   "attributes": {
-    "Category": {
+    "Categories": {
       "type": "enumeration",
       "enum": [
-        "Mens_clothing",
-        "Womens_clothing",
-        "Kids_clothing"
-      ],
-      "required": true
+        "Clothes",
+        "Shoes",
+        "Accessories"
+      ]
     }
   }
 }
