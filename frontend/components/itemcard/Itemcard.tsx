@@ -23,10 +23,7 @@ const Itemcard = ({ props, hot }: iItem) => {
       {hot && <Image src={hotDeal} alt="" className={style.hotDeal} />}
       <p>{props?.Name}</p>
       <div className={style.imageContainer}>
-        <img
-          src={"http://localhost:1337" + props?.Image?.data[0].attributes?.url}
-          alt="product image"
-        />
+        <img src={props?.Image?.data[0].attributes?.url} alt="product image" />
       </div>
       <div className={style.contentContainer}>
         <h3 className={style.description}>{props?.ShortDesc}</h3>

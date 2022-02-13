@@ -18,14 +18,12 @@ const Productcard = ({ props }: ProductTypes) => {
 
   const router = useRouter();
   const handeClick = (colorIndex: any) => {
-    console.log(colorIndex);
     const color = props.clothes!.data[0].attributes!.Colors!.map(
       ({ Color }) => {
         return Color;
       }
     );
     const i = color.indexOf(colorIndex);
-    console.log(i);
     setColor(i);
   };
 
@@ -44,7 +42,10 @@ const Productcard = ({ props }: ProductTypes) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            src={`//localhost:1337${props.clothes?.data[0].attributes?.Image?.data[color]?.attributes?.url}`}
+            src={
+              props.clothes?.data[0].attributes?.Image?.data[color]?.attributes
+                ?.url
+            }
             alt=""
           />
         </div>
