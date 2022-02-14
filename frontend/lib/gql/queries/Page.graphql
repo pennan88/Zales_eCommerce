@@ -4,6 +4,34 @@ query getPages($path: String!) {
       attributes {
         Title
         Path
+        clothes {
+          data {
+            attributes {
+              Name
+              Price
+              Image {
+                data {
+                  attributes {
+                    name
+                    url
+                  }
+                }
+              }
+              Slug
+              Size {
+                Size
+              }
+              ShortDesc
+              LongDesc
+              Category {
+                Categories
+              }
+              Colors {
+                Color
+              }
+            }
+          }
+        }
       }
     }
   }

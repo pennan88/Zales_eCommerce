@@ -125,6 +125,11 @@ export type ClothInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type ClothRelationResponseCollection = {
+  __typename?: 'ClothRelationResponseCollection';
+  data: Array<ClothEntity>;
+};
+
 export type ComponentExtraCategory = {
   __typename?: 'ComponentExtraCategory';
   Categories?: Maybe<Enum_Componentextracategory_Categories>;
@@ -551,8 +556,17 @@ export type Page = {
   __typename?: 'Page';
   Path: Scalars['String'];
   Title: Scalars['String'];
+  clothes?: Maybe<ClothRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type PageClothesArgs = {
+  filters?: InputMaybe<ClothFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type PageEntity = {
@@ -576,6 +590,7 @@ export type PageFiltersInput = {
   Path?: InputMaybe<StringFilterInput>;
   Title?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  clothes?: InputMaybe<ClothFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<PageFiltersInput>;
@@ -586,6 +601,7 @@ export type PageFiltersInput = {
 export type PageInput = {
   Path?: InputMaybe<Scalars['String']>;
   Title?: InputMaybe<Scalars['String']>;
+  clothes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type Pagination = {
@@ -1033,7 +1049,7 @@ export type GetPagesQueryVariables = Exact<{
 }>;
 
 
-export type GetPagesQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', attributes?: { __typename?: 'Page', Title: string, Path: string } }> } };
+export type GetPagesQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', attributes?: { __typename?: 'Page', Title: string, Path: string, clothes?: { __typename?: 'ClothRelationResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> } } }> } };
 
 export type GetOneClothesQueryVariables = Exact<{
   slug: Scalars['String'];

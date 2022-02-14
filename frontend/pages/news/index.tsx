@@ -1,11 +1,9 @@
 import Banner from "@components/Banner/Banner";
 import Grid from "@components/gird/Grid";
-import { motion } from "framer-motion";
-import { ClothEntity, PageEntity } from "generated/graphql";
+import { PageEntity } from "generated/graphql";
 import { initializeApollo } from "lib/apollo";
-import { queryClothes, queryPage } from "shared/utils/queries";
+import { queryPage } from "shared/utils/queries";
 import Itemcard from "../../components/itemcard/Itemcard";
-import style from "./News.module.scss";
 
 const stagger = {
   animate: {
@@ -17,20 +15,16 @@ const stagger = {
 
 interface IProps {
   page: PageEntity["attributes"];
-  clothes: ClothEntity[];
 }
 
-const News = ({ page, clothes }: IProps) => {
+const News = ({ page }: IProps) => {
   return (
     <>
       <Banner Header={"All the latest and greatest"} />
       <Grid>
-        {clothes &&
-          clothes!.map((cloth, index) => {
-            return (
-              <Itemcard hot={false} key={index} props={cloth.attributes} />
-            );
-          })}
+        {page!.clothes?.data.map((cloth, index) => {
+          return <Itemcard hot={false} key={index} props={cloth.attributes} />;
+        })}
       </Grid>
     </>
   );
@@ -42,13 +36,9 @@ export const getStaticProps = async () => {
   const pageData = await queryPage("news", {
     client: client,
   });
-  const clothesData = await queryClothes({
-    client: client,
-  });
   return {
     props: {
       page: pageData,
-      clothes: clothesData,
     },
   };
 };

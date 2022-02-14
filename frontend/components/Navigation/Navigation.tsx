@@ -3,6 +3,7 @@ import Category from "../Category/Category";
 import logo from "../../public/images/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "@components/Cart/Cart";
 const Navigation = () => {
   return (
     <div className={style.sideWrapper}>
@@ -15,6 +16,8 @@ const Navigation = () => {
 
         <div className={style.itemContainer}>
           <div className={style.itemList}>
+            <Cart />
+
             <Link href={"/news"}>
               <Category>News</Category>
             </Link>

@@ -19,6 +19,11 @@
     "Path": {
       "type": "string",
       "required": true
+    },
+    "clothes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cloth.cloth"
     }
   }
 }
