@@ -3,10 +3,12 @@ import {
   Enum_Componentextracolor_Color,
   GetOneClothesQuery,
 } from "generated/graphql";
+import { addCartDispatch } from "lib/redux/dispatch";
 import Markdown from "markdown-to-jsx";
 import { useRouter } from "next/router";
 import { fadeIn, fadeUp } from "public/animations/framer";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
@@ -15,6 +17,7 @@ interface ProductTypes {
 
 const Productcard = ({ props }: ProductTypes) => {
   const [color, setColor] = useState(0);
+  const dispatch = useDispatch();
 
   const router = useRouter();
   const handeClick = (colorIndex: any) => {
@@ -110,6 +113,12 @@ const Productcard = ({ props }: ProductTypes) => {
               animate="animate"
               exit="exit"
               className={styles.btn}
+              onClick={() => {
+                addCartDispatch(
+                  props.clothes?.data[0].attributes?.Price!,
+                  dispatch
+                );
+              }}
             >
               Purchase
             </motion.div>

@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<number>) => {
-      state.cart + action.payload;
+      state.cart += action.payload;
     },
   },
 });
