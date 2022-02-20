@@ -1,22 +1,29 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+interface Cart {
+  name: string;
+  image: string;
+  size: string;
+  color: string;
+  price: number;
+}
 interface CartState {
-  cart: number;
+  value: Cart[];
 }
 
 const initialState: CartState = {
-  cart: 0,
+  value: [],
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<number>) => {
-      state.cart += action.payload;
+    addCart: (state, action: PayloadAction<Cart>) => {
+      state.value.push(action.payload);
     },
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addCart } = cartSlice.actions;
 export default cartSlice.reducer;

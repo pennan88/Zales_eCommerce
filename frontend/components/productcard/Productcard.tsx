@@ -16,18 +16,25 @@ interface ProductTypes {
 }
 
 const Productcard = ({ props }: ProductTypes) => {
-  const [color, setColor] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [color, setColor] = useState("white");
+  const [size, setSize] = useState("S");
   const dispatch = useDispatch();
 
   const router = useRouter();
-  const handeClick = (colorIndex: any) => {
+  const handeColor = (colorIndex: any) => {
     const color = props.clothes!.data[0].attributes!.Colors!.map(
       ({ Color }) => {
         return Color;
       }
     );
     const i = color.indexOf(colorIndex);
-    setColor(i);
+    setIndex(i);
+  };
+
+  const handeClick = (i: any, color: string) => {
+    handeColor(i);
+    setColor(color);
   };
 
   return (
@@ -46,7 +53,7 @@ const Productcard = ({ props }: ProductTypes) => {
             animate="animate"
             exit="exit"
             src={
-              props.clothes?.data[0].attributes?.Image?.data[color]?.attributes
+              props.clothes?.data[0].attributes?.Image?.data[index]?.attributes
                 ?.url
             }
             alt=""
@@ -80,6 +87,7 @@ const Productcard = ({ props }: ProductTypes) => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
+                onClick={() => setSize(Size)}
               >
                 {Size}
               </motion.h4>
@@ -93,7 +101,7 @@ const Productcard = ({ props }: ProductTypes) => {
               ({ Color }, index) => {
                 return (
                   <motion.h4
-                    onClick={() => handeClick(Color)}
+                    onClick={() => handeClick(Color, Color!)}
                     key={index}
                     className={[styles.color, styles[`${Color}`]].join(" ")}
                   ></motion.h4>
@@ -115,6 +123,11 @@ const Productcard = ({ props }: ProductTypes) => {
               className={styles.btn}
               onClick={() => {
                 addCartDispatch(
+                  props.clothes?.data[0].attributes?.Name!,
+                  props.clothes?.data[0].attributes?.Image?.data[index]
+                    ?.attributes?.url!,
+                  size,
+                  color,
                   props.clothes?.data[0].attributes?.Price!,
                   dispatch
                 );
