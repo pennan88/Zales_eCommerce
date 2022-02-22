@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_extra_shoe_sizes",
+  "info": {
+    "displayName": "ShoeSize",
+    "icon": "arrow-circle-left"
+  },
+  "options": {},
+  "attributes": {
+    "Size": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

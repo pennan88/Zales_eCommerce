@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shoes",
+  "info": {
+    "singularName": "shoe",
+    "pluralName": "shoes",
+    "displayName": "Shoe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Category": {
+      "type": "component",
+      "repeatable": false,
+      "component": "extra.category",
+      "required": true
+    },
+    "GenderCategory": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.gender-category",
+      "required": true
+    },
+    "Size": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.shoe-size",
+      "required": true
+    },
+    "Color": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.color",
+      "required": true
+    },
+    "ShortDesc": {
+      "type": "string",
+      "required": true
+    },
+    "LongDesc": {
+      "type": "richtext",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name"
+    }
+  }
+}

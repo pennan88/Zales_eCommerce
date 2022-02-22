@@ -14,7 +14,7 @@ const Shoes = ({ page }: IProps) => {
     <>
       <Banner Header={""} />
       <Grid>
-        {page!.clothes?.data.map((cloth, index) => {
+        {page!.products?.data[0].attributes?.shoes?.data.map((cloth, index) => {
           return <Itemcard hot={false} key={index} props={cloth.attributes} />;
         })}
       </Grid>

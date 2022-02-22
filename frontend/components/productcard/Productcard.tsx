@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import {
-  Enum_Componentextracolor_Color,
-  GetOneClothesQuery,
+  GetProductsQuery,
+  GetSpecifcProductsQuery,
+  ProductEntity,
 } from "generated/graphql";
 import { addCartDispatch } from "lib/redux/dispatch";
 import Markdown from "markdown-to-jsx";
@@ -12,7 +13,7 @@ import { useDispatch } from "react-redux";
 import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
-  props: GetOneClothesQuery;
+  props: ProductEntity["attributes"];
 }
 
 const Productcard = ({ props }: ProductTypes) => {
@@ -23,7 +24,7 @@ const Productcard = ({ props }: ProductTypes) => {
 
   const router = useRouter();
   const handeColor = (colorIndex: any) => {
-    const color = props.clothes!.data[0].attributes!.Colors!.map(
+    const color = props!.clothes!.data[0].attributes!.Colors!.map(
       ({ Color }) => {
         return Color;
       }
@@ -53,8 +54,8 @@ const Productcard = ({ props }: ProductTypes) => {
             animate="animate"
             exit="exit"
             src={
-              props.clothes?.data[0].attributes?.Image?.data[index]?.attributes
-                ?.url
+              props?.clothes?.data[0].attributes?.Image?.data[index].attributes
+                ?.url!
             }
             alt=""
           />
@@ -71,16 +72,16 @@ const Productcard = ({ props }: ProductTypes) => {
         </div>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
-            {props.clothes?.data[0].attributes?.Name}
+            {props!.clothes?.data[0].attributes?.Name}
           </h1>
         </div>
         <div className={styles.descriptionContainer}>
-          <Markdown>{props!.clothes!.data[0].attributes!.LongDesc!}</Markdown>
+          <Markdown>{props!.clothes?.data[0].attributes?.LongDesc!}</Markdown>
         </div>
         <div className={styles.sizeContainer}>
           <h1>Avalible Sizes</h1>
           <div>
-            {props?.clothes?.data[0].attributes?.Size.map(({ Size }, index) => (
+            {props?.clothes!.data[0].attributes?.Size.map(({ Size }, index) => (
               <motion.h4
                 key={index}
                 variants={fadeUp}
@@ -97,7 +98,7 @@ const Productcard = ({ props }: ProductTypes) => {
         <div className={styles.colorContainer}>
           <h1>Colors</h1>
           <div>
-            {props.clothes?.data[0].attributes?.Colors?.map(
+            {props!.clothes?.data[0].attributes!.Colors?.map(
               ({ Color }, index) => {
                 return (
                   <motion.h4
@@ -123,12 +124,12 @@ const Productcard = ({ props }: ProductTypes) => {
               className={styles.btn}
               onClick={() => {
                 addCartDispatch(
-                  props.clothes?.data[0].attributes?.Name!,
-                  props.clothes?.data[0].attributes?.Image?.data[index]
-                    ?.attributes?.url!,
+                  props!.clothes?.data[0].attributes?.Name!,
+                  props!.clothes?.data[0].attributes?.Image?.data[index]
+                    .attributes?.url!,
                   size,
                   color,
-                  props.clothes?.data[0].attributes?.Price!,
+                  props!.clothes?.data[0].attributes?.Price!,
                   dispatch
                 );
               }}

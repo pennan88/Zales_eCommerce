@@ -1,32 +1,62 @@
-query getClothes {
-  clothes {
+query getProducts {
+  products {
     data {
       attributes {
-        Name
-        ShortDesc
-        Price
-        Image {
+        Title
+        clothes {
           data {
             attributes {
-              name
-              url
+              Name
+              Price
+              Image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              Slug
+              Size {
+                Size
+              }
+              ShortDesc
+              LongDesc
+              Category {
+                Categories
+              }
+              Colors {
+                Color
+              }
             }
           }
         }
-        Slug
-        Colors {
-          Color
+        shoes {
+          data {
+            attributes {
+              Name
+              Price
+              Image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              Slug
+              Size {
+                Size
+              }
+              ShortDesc
+              LongDesc
+              Category {
+                Categories
+              }
+              Color {
+                Color
+              }
+            }
+          }
         }
-        Size {
-          Size
-        }
-        Category {
-          Categories
-        }
-        GenderCategory {
-          Categories
-        }
-        LongDesc
       }
     }
   }

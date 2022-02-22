@@ -60,7 +60,7 @@
     },
     "GenderCategory": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "extra.gender-category",
       "required": true
     }

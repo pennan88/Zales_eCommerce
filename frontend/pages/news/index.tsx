@@ -1,6 +1,6 @@
 import Banner from "@components/Banner/Banner";
 import Grid from "@components/gird/Grid";
-import { PageEntity } from "generated/graphql";
+import { GetPagesQuery, PageEntity } from "generated/graphql";
 import { initializeApollo } from "lib/apollo";
 import { queryPage } from "shared/utils/queries";
 import Itemcard from "../../components/itemcard/Itemcard";
@@ -22,7 +22,14 @@ const News = ({ page }: IProps) => {
     <>
       <Banner Header={"All the latest and greatest"} />
       <Grid>
-        {page!.clothes?.data.map((cloth, index) => {
+        {page!.products?.data[0].attributes?.clothes?.data.map(
+          (cloth, index) => {
+            return (
+              <Itemcard hot={false} key={index} props={cloth.attributes} />
+            );
+          }
+        )}
+        {page!.products?.data[0].attributes?.shoes?.data.map((cloth, index) => {
           return <Itemcard hot={false} key={index} props={cloth.attributes} />;
         })}
       </Grid>

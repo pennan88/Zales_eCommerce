@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import hotDeal from "../../public/images/promotional.png";
 import Image from "next/image";
 import { fadeInUp } from "public/animations/framer";
-import { ClothEntity } from "generated/graphql";
+import { ClothEntity, ShoeEntity } from "generated/graphql";
 
 interface iItem {
-  props: ClothEntity["attributes"];
+  props: ClothEntity["attributes"] | ShoeEntity["attributes"];
   hot: boolean;
 }
 

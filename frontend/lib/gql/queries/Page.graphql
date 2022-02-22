@@ -4,30 +4,63 @@ query getPages($path: String!) {
       attributes {
         Title
         Path
-        clothes {
+        products {
           data {
             attributes {
-              Name
-              Price
-              Image {
+              Title
+              clothes {
                 data {
                   attributes {
-                    name
-                    url
+                    Name
+                    Price
+                    Image {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
+                    Slug
+                    Size {
+                      Size
+                    }
+                    ShortDesc
+                    LongDesc
+                    Category {
+                      Categories
+                    }
+                    Colors {
+                      Color
+                    }
                   }
                 }
               }
-              Slug
-              Size {
-                Size
-              }
-              ShortDesc
-              LongDesc
-              Category {
-                Categories
-              }
-              Colors {
-                Color
+              shoes {
+                data {
+                  attributes {
+                    Name
+                    Price
+                    Image {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
+                    Slug
+                    Size {
+                      Size
+                    }
+                    ShortDesc
+                    LongDesc
+                    Category {
+                      Categories
+                    }
+                    Color {
+                      Color
+                    }
+                  }
+                }
               }
             }
           }
