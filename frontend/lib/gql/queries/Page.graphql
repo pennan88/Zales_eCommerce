@@ -1,67 +1,12 @@
-query getPages($path: String!) {
+query getPage($path: String!) {
   pages(filters: { Path: { eq: $path } }) {
     data {
       attributes {
-        Title
         Path
-        products {
+        categories {
           data {
             attributes {
-              Title
-              clothes {
-                data {
-                  attributes {
-                    Name
-                    Price
-                    Image {
-                      data {
-                        attributes {
-                          url
-                        }
-                      }
-                    }
-                    Slug
-                    Size {
-                      Size
-                    }
-                    ShortDesc
-                    LongDesc
-                    Category {
-                      Categories
-                    }
-                    Colors {
-                      Color
-                    }
-                  }
-                }
-              }
-              shoes {
-                data {
-                  attributes {
-                    Name
-                    Price
-                    Image {
-                      data {
-                        attributes {
-                          url
-                        }
-                      }
-                    }
-                    Slug
-                    Size {
-                      Size
-                    }
-                    ShortDesc
-                    LongDesc
-                    Category {
-                      Categories
-                    }
-                    Color {
-                      Color
-                    }
-                  }
-                }
-              }
+              Name
             }
           }
         }

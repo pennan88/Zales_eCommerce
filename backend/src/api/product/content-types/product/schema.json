@@ -12,19 +12,48 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "Name": {
       "type": "string",
       "required": true
     },
-    "clothes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::cloth.cloth"
+    "Price": {
+      "type": "decimal",
+      "required": true
     },
-    "shoes": {
+    "Images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "Sizes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.sizes",
+      "required": false
+    },
+    "Colors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "extra.color"
+    },
+    "ShortDesc": {
+      "type": "string",
+      "required": true
+    },
+    "LongDesc": {
+      "type": "richtext"
+    },
+    "categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::shoe.shoe"
+      "target": "api::category.category"
     }
   }
 }

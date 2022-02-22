@@ -1,0 +1,34 @@
+query getAllProducts {
+  products {
+    data {
+      attributes {
+        Name
+        Price
+        Images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        Slug
+        Sizes {
+          Size
+        }
+        Colors {
+          Color
+        }
+        categories {
+          data {
+            attributes {
+              Name
+              createdAt
+            }
+          }
+        }
+        LongDesc
+        ShortDesc
+      }
+    }
+  }
+}

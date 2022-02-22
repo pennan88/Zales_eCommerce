@@ -1,0 +1,33 @@
+query getProduct($category: String!) {
+  products(filters: { categories: { Name: { eq: $category } } }) {
+    data {
+      attributes {
+        Name
+        Price
+        Images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        Slug
+        Sizes {
+          Size
+        }
+        Colors {
+          Color
+        }
+        categories {
+          data {
+            attributes {
+              Name
+            }
+          }
+        }
+        LongDesc
+        ShortDesc
+      }
+    }
+  }
+}

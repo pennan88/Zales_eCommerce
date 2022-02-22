@@ -1,26 +1,22 @@
 import Banner from "@components/Banner/Banner";
 import Grid from "@components/gird/Grid";
 import Itemcard from "@components/itemcard/Itemcard";
-import { PageEntity } from "generated/graphql";
+import { PageEntity, ProductEntityResponseCollection } from "generated/graphql";
 import { initializeApollo } from "lib/apollo";
-import { queryPage } from "shared/utils/queries";
+import { queryPage, queryProducts } from "shared/utils/queries";
 
 interface IProps {
-  page: PageEntity["attributes"];
+  product: ProductEntityResponseCollection;
 }
 
-const Clothes = ({ page }: IProps) => {
+const Clothes = ({ product }: IProps) => {
   return (
     <>
       <Banner Header={""} />
       <Grid>
-        {page!.products?.data[0].attributes?.clothes?.data.map(
-          (cloth, index) => {
-            return (
-              <Itemcard hot={false} key={index} props={cloth.attributes} />
-            );
-          }
-        )}
+        {product.data.map(({ attributes }, index) => (
+          <Itemcard key={index} props={attributes} />
+        ))}
       </Grid>
     </>
   );
@@ -32,8 +28,12 @@ export const getStaticProps = async () => {
   const pageData = await queryPage("clothes", {
     client: client,
   });
+  const productData = await queryProducts("Clothes", {
+    client: client,
+  });
   return {
     props: {
+      product: productData,
       page: pageData,
     },
   };

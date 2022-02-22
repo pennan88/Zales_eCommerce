@@ -41,111 +41,50 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type Cloth = {
-  __typename?: 'Cloth';
-  Category: ComponentExtraCategory;
-  Colors?: Maybe<Array<Maybe<ComponentExtraColor>>>;
-  GenderCategory: Array<Maybe<ComponentExtraGenderCategory>>;
-  Image?: Maybe<UploadFileRelationResponseCollection>;
-  LongDesc?: Maybe<Scalars['String']>;
-  Name: Scalars['String'];
-  Price: Scalars['Float'];
-  ShortDesc?: Maybe<Scalars['String']>;
-  Size: Array<Maybe<ComponentExtraSizes>>;
-  Slug: Scalars['String'];
+export type Category = {
+  __typename?: 'Category';
+  Name?: Maybe<Enum_Category_Name>;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-
-export type ClothColorsArgs = {
-  filters?: InputMaybe<ComponentExtraColorFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ClothGenderCategoryArgs = {
-  filters?: InputMaybe<ComponentExtraGenderCategoryFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ClothImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ClothSizeArgs = {
-  filters?: InputMaybe<ComponentExtraSizesFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ClothEntity = {
-  __typename?: 'ClothEntity';
-  attributes?: Maybe<Cloth>;
+export type CategoryEntity = {
+  __typename?: 'CategoryEntity';
+  attributes?: Maybe<Category>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type ClothEntityResponse = {
-  __typename?: 'ClothEntityResponse';
-  data?: Maybe<ClothEntity>;
+export type CategoryEntityResponse = {
+  __typename?: 'CategoryEntityResponse';
+  data?: Maybe<CategoryEntity>;
 };
 
-export type ClothEntityResponseCollection = {
-  __typename?: 'ClothEntityResponseCollection';
-  data: Array<ClothEntity>;
+export type CategoryEntityResponseCollection = {
+  __typename?: 'CategoryEntityResponseCollection';
+  data: Array<CategoryEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type ClothFiltersInput = {
-  LongDesc?: InputMaybe<StringFilterInput>;
+export type CategoryFiltersInput = {
   Name?: InputMaybe<StringFilterInput>;
-  Price?: InputMaybe<FloatFilterInput>;
-  ShortDesc?: InputMaybe<StringFilterInput>;
-  Slug?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ClothFiltersInput>>>;
+  and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<ClothFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ClothFiltersInput>>>;
+  not?: InputMaybe<CategoryFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
-export type ClothInput = {
-  Category?: InputMaybe<ComponentExtraCategoryInput>;
-  Colors?: InputMaybe<Array<InputMaybe<ComponentExtraColorInput>>>;
-  GenderCategory?: InputMaybe<Array<InputMaybe<ComponentExtraGenderCategoryInput>>>;
-  Image?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  LongDesc?: InputMaybe<Scalars['String']>;
-  Name?: InputMaybe<Scalars['String']>;
-  Price?: InputMaybe<Scalars['Float']>;
-  ShortDesc?: InputMaybe<Scalars['String']>;
-  Size?: InputMaybe<Array<InputMaybe<ComponentExtraSizesInput>>>;
-  Slug?: InputMaybe<Scalars['String']>;
+export type CategoryInput = {
+  Name?: InputMaybe<Enum_Category_Name>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type ClothRelationResponseCollection = {
-  __typename?: 'ClothRelationResponseCollection';
-  data: Array<ClothEntity>;
-};
-
-export type ComponentExtraCategory = {
-  __typename?: 'ComponentExtraCategory';
-  Categories?: Maybe<Enum_Componentextracategory_Categories>;
-  id: Scalars['ID'];
-};
-
-export type ComponentExtraCategoryInput = {
-  Categories?: InputMaybe<Enum_Componentextracategory_Categories>;
-  id?: InputMaybe<Scalars['ID']>;
+export type CategoryRelationResponseCollection = {
+  __typename?: 'CategoryRelationResponseCollection';
+  data: Array<CategoryEntity>;
 };
 
 export type ComponentExtraColor = {
@@ -166,45 +105,9 @@ export type ComponentExtraColorInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type ComponentExtraGenderCategory = {
-  __typename?: 'ComponentExtraGenderCategory';
-  Categories?: Maybe<Enum_Componentextragendercategory_Categories>;
-  id: Scalars['ID'];
-};
-
-export type ComponentExtraGenderCategoryFiltersInput = {
-  Categories?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ComponentExtraGenderCategoryFiltersInput>>>;
-  not?: InputMaybe<ComponentExtraGenderCategoryFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentExtraGenderCategoryFiltersInput>>>;
-};
-
-export type ComponentExtraGenderCategoryInput = {
-  Categories?: InputMaybe<Enum_Componentextragendercategory_Categories>;
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-export type ComponentExtraShoeSize = {
-  __typename?: 'ComponentExtraShoeSize';
-  Size: Scalars['String'];
-  id: Scalars['ID'];
-};
-
-export type ComponentExtraShoeSizeFiltersInput = {
-  Size?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ComponentExtraShoeSizeFiltersInput>>>;
-  not?: InputMaybe<ComponentExtraShoeSizeFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentExtraShoeSizeFiltersInput>>>;
-};
-
-export type ComponentExtraShoeSizeInput = {
-  Size?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 export type ComponentExtraSizes = {
   __typename?: 'ComponentExtraSizes';
-  Size: Enum_Componentextrasizes_Size;
+  Size: Scalars['String'];
   id: Scalars['ID'];
 };
 
@@ -216,7 +119,7 @@ export type ComponentExtraSizesFiltersInput = {
 };
 
 export type ComponentExtraSizesInput = {
-  Size?: InputMaybe<Enum_Componentextrasizes_Size>;
+  Size?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -243,9 +146,9 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
-export enum Enum_Componentextracategory_Categories {
-  Accessories = 'Accessories',
+export enum Enum_Category_Name {
   Clothes = 'Clothes',
+  News = 'News',
   Shoes = 'Shoes'
 }
 
@@ -258,21 +161,6 @@ export enum Enum_Componentextracolor_Color {
   Red = 'Red',
   White = 'White',
   Yellow = 'Yellow'
-}
-
-export enum Enum_Componentextragendercategory_Categories {
-  Kids = 'Kids',
-  Mens = 'Mens',
-  Women = 'Women'
-}
-
-export enum Enum_Componentextrasizes_Size {
-  L = 'L',
-  M = 'M',
-  S = 'S',
-  Xl = 'XL',
-  Xs = 'XS',
-  Xxl = 'XXL'
 }
 
 export type FileInfoInput = {
@@ -304,7 +192,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Cloth | ComponentExtraCategory | ComponentExtraColor | ComponentExtraGenderCategory | ComponentExtraShoeSize | ComponentExtraSizes | I18NLocale | Page | Product | Shoe | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | ComponentExtraColor | ComponentExtraSizes | I18NLocale | Page | Product | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -413,19 +301,17 @@ export type JsonFilterInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createCloth?: Maybe<ClothEntityResponse>;
+  createCategory?: Maybe<CategoryEntityResponse>;
   createPage?: Maybe<PageEntityResponse>;
   createProduct?: Maybe<ProductEntityResponse>;
-  createShoe?: Maybe<ShoeEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-  deleteCloth?: Maybe<ClothEntityResponse>;
+  deleteCategory?: Maybe<CategoryEntityResponse>;
   deletePage?: Maybe<PageEntityResponse>;
   deleteProduct?: Maybe<ProductEntityResponse>;
-  deleteShoe?: Maybe<ShoeEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -442,11 +328,10 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
-  updateCloth?: Maybe<ClothEntityResponse>;
+  updateCategory?: Maybe<CategoryEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updatePage?: Maybe<PageEntityResponse>;
   updateProduct?: Maybe<ProductEntityResponse>;
-  updateShoe?: Maybe<ShoeEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -456,8 +341,8 @@ export type Mutation = {
 };
 
 
-export type MutationCreateClothArgs = {
-  data: ClothInput;
+export type MutationCreateCategoryArgs = {
+  data: CategoryInput;
 };
 
 
@@ -468,11 +353,6 @@ export type MutationCreatePageArgs = {
 
 export type MutationCreateProductArgs = {
   data: ProductInput;
-};
-
-
-export type MutationCreateShoeArgs = {
-  data: ShoeInput;
 };
 
 
@@ -491,7 +371,7 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
-export type MutationDeleteClothArgs = {
+export type MutationDeleteCategoryArgs = {
   id: Scalars['ID'];
 };
 
@@ -502,11 +382,6 @@ export type MutationDeletePageArgs = {
 
 
 export type MutationDeleteProductArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteShoeArgs = {
   id: Scalars['ID'];
 };
 
@@ -566,8 +441,8 @@ export type MutationResetPasswordArgs = {
 };
 
 
-export type MutationUpdateClothArgs = {
-  data: ClothInput;
+export type MutationUpdateCategoryArgs = {
+  data: CategoryInput;
   id: Scalars['ID'];
 };
 
@@ -586,12 +461,6 @@ export type MutationUpdatePageArgs = {
 
 export type MutationUpdateProductArgs = {
   data: ProductInput;
-  id: Scalars['ID'];
-};
-
-
-export type MutationUpdateShoeArgs = {
-  data: ShoeInput;
   id: Scalars['ID'];
 };
 
@@ -626,14 +495,14 @@ export type Page = {
   __typename?: 'Page';
   Path: Scalars['String'];
   Title: Scalars['String'];
+  categories?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  products?: Maybe<ProductRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type PageProductsArgs = {
-  filters?: InputMaybe<ProductFiltersInput>;
+export type PageCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -660,18 +529,18 @@ export type PageFiltersInput = {
   Path?: InputMaybe<StringFilterInput>;
   Title?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<PageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
-  products?: InputMaybe<ProductFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type PageInput = {
   Path?: InputMaybe<Scalars['String']>;
   Title?: InputMaybe<Scalars['String']>;
-  products?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type Pagination = {
@@ -691,26 +560,46 @@ export type PaginationArg = {
 
 export type Product = {
   __typename?: 'Product';
-  Title: Scalars['String'];
-  clothes?: Maybe<ClothRelationResponseCollection>;
+  Colors?: Maybe<Array<Maybe<ComponentExtraColor>>>;
+  Images: UploadFileRelationResponseCollection;
+  LongDesc?: Maybe<Scalars['String']>;
+  Name: Scalars['String'];
+  Price: Scalars['Float'];
+  ShortDesc: Scalars['String'];
+  Sizes?: Maybe<Array<Maybe<ComponentExtraSizes>>>;
+  Slug?: Maybe<Scalars['String']>;
+  categories?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
-  shoes?: Maybe<ShoeRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type ProductClothesArgs = {
-  filters?: InputMaybe<ClothFiltersInput>;
+export type ProductColorsArgs = {
+  filters?: InputMaybe<ComponentExtraColorFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type ProductShoesArgs = {
-  filters?: InputMaybe<ShoeFiltersInput>;
+export type ProductImagesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ProductSizesArgs = {
+  filters?: InputMaybe<ComponentExtraSizesFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ProductCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -732,28 +621,32 @@ export type ProductEntityResponseCollection = {
 };
 
 export type ProductFiltersInput = {
-  Title?: InputMaybe<StringFilterInput>;
+  LongDesc?: InputMaybe<StringFilterInput>;
+  Name?: InputMaybe<StringFilterInput>;
+  Price?: InputMaybe<FloatFilterInput>;
+  ShortDesc?: InputMaybe<StringFilterInput>;
+  Slug?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>;
-  clothes?: InputMaybe<ClothFiltersInput>;
+  categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<ProductFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  shoes?: InputMaybe<ShoeFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ProductInput = {
-  Title?: InputMaybe<Scalars['String']>;
-  clothes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  Colors?: InputMaybe<Array<InputMaybe<ComponentExtraColorInput>>>;
+  Images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  LongDesc?: InputMaybe<Scalars['String']>;
+  Name?: InputMaybe<Scalars['String']>;
+  Price?: InputMaybe<Scalars['Float']>;
+  ShortDesc?: InputMaybe<Scalars['String']>;
+  Sizes?: InputMaybe<Array<InputMaybe<ComponentExtraSizesInput>>>;
+  Slug?: InputMaybe<Scalars['String']>;
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-  shoes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-};
-
-export type ProductRelationResponseCollection = {
-  __typename?: 'ProductRelationResponseCollection';
-  data: Array<ProductEntity>;
 };
 
 export enum PublicationState {
@@ -763,8 +656,8 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
-  cloth?: Maybe<ClothEntityResponse>;
-  clothes?: Maybe<ClothEntityResponseCollection>;
+  categories?: Maybe<CategoryEntityResponseCollection>;
+  category?: Maybe<CategoryEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -772,8 +665,6 @@ export type Query = {
   pages?: Maybe<PageEntityResponseCollection>;
   product?: Maybe<ProductEntityResponse>;
   products?: Maybe<ProductEntityResponseCollection>;
-  shoe?: Maybe<ShoeEntityResponse>;
-  shoes?: Maybe<ShoeEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -783,16 +674,16 @@ export type Query = {
 };
 
 
-export type QueryClothArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryClothesArgs = {
-  filters?: InputMaybe<ClothFiltersInput>;
+export type QueryCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryCategoryArgs = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 
@@ -829,18 +720,6 @@ export type QueryProductsArgs = {
   filters?: InputMaybe<ProductFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QueryShoeArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryShoesArgs = {
-  filters?: InputMaybe<ShoeFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -883,99 +762,6 @@ export type QueryUsersPermissionsUsersArgs = {
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
   pagination: Pagination;
-};
-
-export type Shoe = {
-  __typename?: 'Shoe';
-  Category: ComponentExtraCategory;
-  Color: Array<Maybe<ComponentExtraColor>>;
-  GenderCategory: Array<Maybe<ComponentExtraGenderCategory>>;
-  Image: UploadFileRelationResponseCollection;
-  LongDesc: Scalars['String'];
-  Name?: Maybe<Scalars['String']>;
-  Price?: Maybe<Scalars['Float']>;
-  ShortDesc: Scalars['String'];
-  Size: Array<Maybe<ComponentExtraShoeSize>>;
-  Slug?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type ShoeColorArgs = {
-  filters?: InputMaybe<ComponentExtraColorFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ShoeGenderCategoryArgs = {
-  filters?: InputMaybe<ComponentExtraGenderCategoryFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ShoeImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type ShoeSizeArgs = {
-  filters?: InputMaybe<ComponentExtraShoeSizeFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ShoeEntity = {
-  __typename?: 'ShoeEntity';
-  attributes?: Maybe<Shoe>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type ShoeEntityResponse = {
-  __typename?: 'ShoeEntityResponse';
-  data?: Maybe<ShoeEntity>;
-};
-
-export type ShoeEntityResponseCollection = {
-  __typename?: 'ShoeEntityResponseCollection';
-  data: Array<ShoeEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type ShoeFiltersInput = {
-  LongDesc?: InputMaybe<StringFilterInput>;
-  Name?: InputMaybe<StringFilterInput>;
-  Price?: InputMaybe<FloatFilterInput>;
-  ShortDesc?: InputMaybe<StringFilterInput>;
-  Slug?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ShoeFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<ShoeFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ShoeFiltersInput>>>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type ShoeInput = {
-  Category?: InputMaybe<ComponentExtraCategoryInput>;
-  Color?: InputMaybe<Array<InputMaybe<ComponentExtraColorInput>>>;
-  GenderCategory?: InputMaybe<Array<InputMaybe<ComponentExtraGenderCategoryInput>>>;
-  Image?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  LongDesc?: InputMaybe<Scalars['String']>;
-  Name?: InputMaybe<Scalars['String']>;
-  Price?: InputMaybe<Scalars['Float']>;
-  ShortDesc?: InputMaybe<Scalars['String']>;
-  Size?: InputMaybe<Array<InputMaybe<ComponentExtraShoeSizeInput>>>;
-  Slug?: InputMaybe<Scalars['String']>;
-};
-
-export type ShoeRelationResponseCollection = {
-  __typename?: 'ShoeRelationResponseCollection';
-  data: Array<ShoeEntity>;
 };
 
 export type StringFilterInput = {
@@ -1298,23 +1084,28 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetOneProductQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Title: string, clothes?: { __typename?: 'ClothRelationResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> }, shoes?: { __typename?: 'ShoeRelationResponseCollection', data: Array<{ __typename?: 'ShoeEntity', attributes?: { __typename?: 'Shoe', Name?: string, Price?: number, Slug?: string, ShortDesc: string, LongDesc: string, Image: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraShoeSize', Size: string }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Color: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> } } }> } };
+export type GetOneProductQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Name: string, Price: number, Slug?: string, LongDesc?: string, ShortDesc: string, Images: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Sizes?: Array<{ __typename?: 'ComponentExtraSizes', Size: string }>, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }>, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', Name?: Enum_Category_Name } }> } } }> } };
 
-export type GetPagesQueryVariables = Exact<{
+export type GetPageQueryVariables = Exact<{
   path: Scalars['String'];
 }>;
 
 
-export type GetPagesQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', attributes?: { __typename?: 'Page', Title: string, Path: string, products?: { __typename?: 'ProductRelationResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Title: string, clothes?: { __typename?: 'ClothRelationResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> }, shoes?: { __typename?: 'ShoeRelationResponseCollection', data: Array<{ __typename?: 'ShoeEntity', attributes?: { __typename?: 'Shoe', Name?: string, Price?: number, Slug?: string, ShortDesc: string, LongDesc: string, Image: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraShoeSize', Size: string }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Color: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> } } }> } } }> } };
+export type GetPageQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', attributes?: { __typename?: 'Page', Path: string, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', Name?: Enum_Category_Name } }> } } }> } };
 
-export type GetSpecifcProductsQueryVariables = Exact<{
-  product: Scalars['String'];
-  clothesSlug: Scalars['String'];
-  shoesSlug: Scalars['String'];
+export type GetProductQueryVariables = Exact<{
+  category: Scalars['String'];
 }>;
 
 
-export type GetSpecifcProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Title: string, clothes?: { __typename?: 'ClothRelationResponseCollection', data: Array<{ __typename?: 'ClothEntity', attributes?: { __typename?: 'Cloth', Name: string, Price: number, Slug: string, ShortDesc?: string, LongDesc?: string, Image?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraSizes', Size: Enum_Componentextrasizes_Size }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> }, shoes?: { __typename?: 'ShoeRelationResponseCollection', data: Array<{ __typename?: 'ShoeEntity', attributes?: { __typename?: 'Shoe', Name?: string, Price?: number, Slug?: string, ShortDesc: string, LongDesc: string, Image: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Size: Array<{ __typename?: 'ComponentExtraShoeSize', Size: string }>, Category: { __typename?: 'ComponentExtraCategory', Categories?: Enum_Componentextracategory_Categories }, Color: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }> } }> } } }> } };
+export type GetProductQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Name: string, Price: number, Slug?: string, LongDesc?: string, ShortDesc: string, Images: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Sizes?: Array<{ __typename?: 'ComponentExtraSizes', Size: string }>, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }>, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', Name?: Enum_Category_Name } }> } } }> } };
+
+export type GetAllProductsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', attributes?: { __typename?: 'Product', Name: string, Price: number, Slug?: string, LongDesc?: string, ShortDesc: string, Images: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } }> }, Sizes?: Array<{ __typename?: 'ComponentExtraSizes', Size: string }>, Colors?: Array<{ __typename?: 'ComponentExtraColor', Color?: Enum_Componentextracolor_Color }>, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', Name?: Enum_Category_Name, createdAt?: any } }> } } }> } };

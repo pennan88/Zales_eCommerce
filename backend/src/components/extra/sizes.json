@@ -2,20 +2,13 @@
   "collectionName": "components_extra_sizes",
   "info": {
     "displayName": "Sizes",
-    "icon": "arrows-alt-v"
+    "icon": "arrows-alt-v",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Size": {
-      "type": "enumeration",
-      "enum": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
+      "type": "string",
       "required": true
     }
   }

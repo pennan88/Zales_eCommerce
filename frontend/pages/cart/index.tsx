@@ -8,7 +8,6 @@ import styles from "./Cart.module.scss";
 const index = () => {
   const [fullCost, setFullCost] = useState(0) as any;
   const cart = useSelector((state: RootState) => state.cart.value);
-  console.log(cart.map(({ price }) => price));
 
   useEffect(() => {
     const sum = cart.map((price) => price.price).reduce((a, b) => a + b);
