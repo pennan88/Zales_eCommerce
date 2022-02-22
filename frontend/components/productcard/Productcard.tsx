@@ -10,9 +10,10 @@ import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
   props: Product;
+  onClick: () => void;
 }
 
-const Productcard = ({ props }: ProductTypes) => {
+const Productcard = ({ props, onClick }: ProductTypes) => {
   const [index, setIndex] = useState(0);
   const [color, setColor] = useState("white");
   const [size, setSize] = useState("S");
@@ -30,6 +31,18 @@ const Productcard = ({ props }: ProductTypes) => {
   const handeClick = (i: any, color: string) => {
     handeColor(i);
     setColor(color);
+  };
+
+  const handlePurchase = () => {
+    addCartDispatch(
+      props!.Name!,
+      props!.Images?.data[index].attributes?.url!,
+      size,
+      color,
+      props!.Price!,
+      dispatch
+    ),
+      onClick;
   };
 
   return (
@@ -107,16 +120,7 @@ const Productcard = ({ props }: ProductTypes) => {
               animate="animate"
               exit="exit"
               className={styles.btn}
-              onClick={() => {
-                addCartDispatch(
-                  props!.Name!,
-                  props!.Images?.data[index].attributes?.url!,
-                  size,
-                  color,
-                  props!.Price!,
-                  dispatch
-                );
-              }}
+              onClick={handlePurchase}
             >
               Purchase
             </motion.div>

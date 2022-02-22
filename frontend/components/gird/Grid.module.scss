@@ -17,17 +17,22 @@
   grid-template-rows: repeat(1, auto);
 
   @include breakpoint(sm) {
-    grid-template-columns: repeat(1, auto);
+    grid-template-columns: repeat(2, auto);
   }
 
   @include breakpoint(md) {
-    grid-template-columns: repeat(2, auto);
-  }
-  @include breakpoint(lg) {
     grid-template-columns: repeat(3, auto);
   }
-
-  @include breakpoint(xl) {
+  @include breakpoint(lg) {
     grid-template-columns: repeat(4, auto);
+  }
+  @include breakpoint(l) {
+    grid-template-columns: repeat(5, auto);
+  }
+  @include breakpoint(xl) {
+    grid-template-columns: repeat(6, auto);
+  }
+  @include breakpoint(xxl) {
+    grid-template-columns: repeat(7, auto);
   }
 }

@@ -4,4 +4,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  .add {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 28px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ulNotification {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: flex-end;
+
+    li {
+      width: 200px;
+      background: white;
+      margin: 10px;
+      height: 100px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background: #cfc9c0;
+
+      .close {
+        position: absolute;
+        top: 15px;
+        background: #cfc9c0;
+
+        right: 10px;
+        border: none;
+      }
+    }
+  }
 }
