@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Product } from "generated/graphql";
-import { addCartDispatch } from "lib/redux/dispatch";
+import { addBasketDispatch, addCartDispatch } from "lib/redux/dispatch";
 import Markdown from "markdown-to-jsx";
 import { useRouter } from "next/router";
 import { fadeIn, fadeUp } from "public/animations/framer";
@@ -36,13 +36,15 @@ const Productcard = ({ props, onClick }: ProductTypes) => {
   const handlePurchase = () => {
     addCartDispatch(
       props!.Name!,
+      props!.Slug!,
       props!.Images?.data[index].attributes?.url!,
       size,
       color,
       props!.Price!,
       dispatch
     ),
-      onClick;
+      addBasketDispatch(dispatch);
+    onClick;
   };
 
   return (

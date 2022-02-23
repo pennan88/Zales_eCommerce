@@ -8,8 +8,20 @@
   justify-content: center;
   align-items: center;
 
-  div {
+  .disabled {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  .enabled {
+    cursor: pointer;
     background-color: green;
+    color: white;
+  }
+
+  div {
     padding: 5px 15px;
     display: flex;
     width: 120px;
@@ -18,7 +30,6 @@
     border-radius: $borderRadius;
     align-items: center;
     transition: 0.3s ease all;
-    color: white;
 
     svg {
       width: 25px;

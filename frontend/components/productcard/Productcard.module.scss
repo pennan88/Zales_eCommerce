@@ -45,6 +45,7 @@
       font-weight: bold;
       background-color: white;
       transition: 0.3s ease all;
+      z-index: 100;
       cursor: pointer;
 
       &:hover {
