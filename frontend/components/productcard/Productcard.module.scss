@@ -86,7 +86,7 @@
         width: 100%;
       }
 
-      h4 {
+      a {
         margin-right: 5px;
         height: 30px;
         width: 50px;
@@ -105,11 +105,11 @@
           border-color: white;
         }
 
-        &:hover {
-          background-color: map-get($indigo, indigo800);
-          color: white;
-          border-color: white;
-        }
+        // &:hover {
+        //   background-color: map-get($indigo, indigo800);
+        //   color: white;
+        //   border-color: white;
+        // }
       }
     }
 
@@ -141,6 +141,10 @@
         cursor: pointer;
         font-weight: bold;
         transition: 0.5s ease all;
+
+        &:focus {
+          transform: scale(110%);
+        }
       }
 
       .White {

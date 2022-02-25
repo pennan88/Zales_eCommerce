@@ -10,39 +10,15 @@ import {
   queryOneProduct,
   queryPage,
 } from "shared/utils/queries";
-import { add, remove } from "./Component/array-utils";
-import { CloseButton } from "./Component/CloseButton";
 
 interface IProps {
   product: ProductEntity["attributes"];
 }
 
 const Product = ({ product }: IProps) => {
-  const [notifications, setNotifications] = useState([0]);
   return (
     <motion.div className={styles.slugContainer}>
-      <Productcard
-        props={product!}
-        onClick={() => setNotifications(add(notifications))}
-      />
-      <ul className={styles.ulNotification}>
-        <AnimatePresence>
-          {notifications.map((id) => (
-            <motion.li
-              className={styles.notification}
-              key={id}
-              initial={{ opacity: 0, y: 50, scale: 0.3 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-            >
-              {product?.Name} purchased
-              <CloseButton
-                close={() => setNotifications(remove(notifications, id))}
-              />
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </ul>
+      <Productcard props={product!} />
     </motion.div>
   );
 };

@@ -10,10 +10,9 @@ import styles from "./Productcard.module.scss";
 
 interface ProductTypes {
   props: Product;
-  onClick: () => void;
 }
 
-const Productcard = ({ props, onClick }: ProductTypes) => {
+const Productcard = ({ props }: ProductTypes) => {
   const [index, setIndex] = useState(0);
   const [color, setColor] = useState("white");
   const [size, setSize] = useState("S");
@@ -44,7 +43,6 @@ const Productcard = ({ props, onClick }: ProductTypes) => {
       dispatch
     ),
       addBasketDispatch(dispatch);
-    onClick;
   };
 
   return (
@@ -86,16 +84,18 @@ const Productcard = ({ props, onClick }: ProductTypes) => {
           <h1>Avalible Sizes</h1>
           <div>
             {props!.Sizes!.map(({ Size }, index) => (
-              <motion.h4
-                key={index}
-                variants={fadeUp}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                onClick={() => setSize(Size)}
-              >
-                {Size}
-              </motion.h4>
+              <>
+                <motion.a
+                  key={index}
+                  variants={fadeUp}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  onClick={() => setSize(Size)}
+                >
+                  {Size}
+                </motion.a>
+              </>
             ))}
           </div>
         </div>

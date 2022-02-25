@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.scss";
 
-const index = () => {
+const Cart = () => {
   const [fullCost, setFullCost] = useState(0) as any;
   const cart = useSelector((state: RootState) => state.cart.value);
   const dispatch = useDispatch();
@@ -15,9 +15,9 @@ const index = () => {
     removeBasketDispatch(dispatch);
   };
   useEffect(() => {
-    const sum = cart.map((price) => price.price).reduce((a, b) => a + b);
+    const sum = cart.map((price) => price.price).reduce((a, b) => a + b, 0);
     setFullCost(sum);
-  }, []);
+  }, [cart]);
 
   return (
     <ul className={styles.tableContainer}>
@@ -37,7 +37,7 @@ const index = () => {
                 {cart.name}
               </div>
               <div className={[styles.col, styles.col2].join(" ")}>
-                <img src={cart.image} />
+                <img src={cart.image} alt="cart image" />
               </div>
               <div className={[styles.col, styles.col3].join(" ")}>
                 {cart.size}
@@ -78,4 +78,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Cart;

@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <div className={[styles.cartContainer].join(" ")}>
-      <Link href="/cart">
+      <Link passHref href="/cart">
         <div className={theme}>
           <AiOutlineShoppingCart />
           <a>{amount}</a>

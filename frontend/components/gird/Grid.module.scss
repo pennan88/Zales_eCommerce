@@ -22,16 +22,19 @@
   @include breakpoint(md) {
     grid-template-columns: repeat(3, auto);
   }
-  @include breakpoint(lg) {
+  @include breakpoint(l) {
     grid-template-columns: repeat(4, auto);
   }
-  @include breakpoint(l) {
+  @include breakpoint(xl) {
     grid-template-columns: repeat(5, auto);
   }
-  @include breakpoint(xl) {
+  @include breakpoint(xxl) {
     grid-template-columns: repeat(6, auto);
   }
-  @include breakpoint(xxl) {
+  @include breakpoint(w) {
     grid-template-columns: repeat(7, auto);
+  }
+  @include breakpoint(uw) {
+    grid-template-columns: repeat(8, auto);
   }
 }

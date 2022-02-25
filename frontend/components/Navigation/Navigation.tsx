@@ -17,26 +17,25 @@ const Navigation = () => {
         <div className={style.itemContainer}>
           <div className={style.itemList}>
             <Cart />
-
-            <Link href={"/news"}>
+            <Link passHref href={"/news"}>
               <Category>News</Category>
             </Link>
-            <Link href={"/clothes"}>
+            <Link passHref href={"/clothes"}>
               <Category>Clothes</Category>
             </Link>
-            <Link href={"/shoes"}>
+            <Link passHref href={"/shoes"}>
               <Category>Shoes</Category>
             </Link>
-            <Link href={"/bags"}>
+            <Link passHref href={"/bags"}>
               <Category>Bags</Category>
             </Link>
-            <Link href={"/accessories"}>
+            <Link passHref href={"/accessories"}>
               <Category>Accessories</Category>
             </Link>
-            <Link href={"/giftcard"}>
+            <Link passHref href={"/giftcard"}>
               <Category>Giftcards</Category>
             </Link>
-            <Link href={"/sale"}>
+            <Link passHref href={"/sale"}>
               <Category variant={"red"}>Sale</Category>
             </Link>
           </div>
